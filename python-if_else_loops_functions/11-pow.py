@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-def add(a, b):
-    return a+b
+def pow(a, b):
+    return a ** b  # Compute a to the power of b
