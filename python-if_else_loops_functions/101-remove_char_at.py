@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-Bes School  
-Chcago  
- is fun!  
-School  
-Python  
+def remove_char_at(str, n):
+    x = str[:n] + str[n + 1:] if n >= 0 else str
+    return x 
