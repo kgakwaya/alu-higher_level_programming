@@ -20,7 +20,11 @@ class Rectangle(BaseGeometry):
         self.integer_validator("height", height)
         self.__width = width
         self.__height = height
-    
+
+    def __dir__(self):
+        """Return list of attributes for dir(Rectangle)."""
+        return super().__dir__()
+
     def __str__(self):
         """Return string representation of Rectangle."""
         return f"[Rectangle] {self.__width}/{self.__height}"
