@@ -1,20 +1,24 @@
- Python script that takes in a letter
-with the letter as a parameter.
-"""
+mport requests
 import sys
-import requests
 
-
-if __name__ == "__main__":
-    letter = "" if len(sys.argv) == 1 else sys.argv[1]
-    payload = {"q": letter}
-
-    r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
+if __name__ == '__main__':
     try:
-        response = r.json()
-        if response == {}:
-            print("No result")
-        else:
-            print("[{}] {}".format(response.get("id"), response.get("name")))
-    except ValueError:
+        lett = sys.argv[1]
+    except IndexError:
+        lett = ""
+    response = requests.post(
+        "http://0.0.0.0:5000/search_user",
+        data={"q": lett}
+    )
+    try:
+        json_response = response.json()
+        if response.headers.get("Content-Type") == 'application/json':
+            if len(json_response) > 0:
+                print("[{}] {}".format(
+                    json_response["id"],
+                    json_response["name"])
+                )
+            else:
+                print("No result")
+    except:
         print("Not a valid JSON")
