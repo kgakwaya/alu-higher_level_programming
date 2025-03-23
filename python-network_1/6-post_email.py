@@ -1,12 +1,16 @@
- Python script to the passed URL with the email as a parameter,
-and finally displays the body of the response.
-"""
-import sys
+ ke a url and display the values"""
+
+
 import requests
+import sys
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
+    """send the email"""
     url = sys.argv[1]
-    value = {'email': sys.argv[2]}
-
-    reqs = requests.post(url, data=value)
-    print(reqs.text)
+    email = sys.argv[2]
+    context = {
+        "email": email
+    }
+    response = requests.post(url, data=context)
+    print("{}".format(response.text))
