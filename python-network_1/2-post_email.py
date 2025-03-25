@@ -1,13 +1,17 @@
- script that sends a POST request with an email as a parameter
-and displays the body of the response (decoded in utf-8).
-"""
-from sys import argv
-from urllib import parse, request
+#!/usr/bin/python3
+"""I documented you"""
 
-if __name__ == "__main__":
-    url = argv[1]
-    email = argv[2]
-    data = parse.urlencode({"email": email}).encode()
-    req = request.Request(url, data=data, method="POST")
-    with request.urlopen(req) as response:
-        print(response.read().decode("utf-8"))
+import urllib.request
+import urllib.parse
+import sys
+
+if __name__ == '__main__':
+    """"Documented"""
+    url = sys.argv[1]
+    message = {"email": sys.argv[2]}
+    data = urllib.parse.urlencode(message)
+    data = data.encode('ascii')
+    req = urllib.request.Request(url, data)
+    with urllib.request.urlopen(req) as response:
+        content = response.read()
+        print("{}".format(content.decode("utf-8")))
