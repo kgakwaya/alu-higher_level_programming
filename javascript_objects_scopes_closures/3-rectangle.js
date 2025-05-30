@@ -1,8 +1,20 @@
-#!/usr/bin/node
-const Rectangle = require('./3-rectangle');
+class Rectangle {
+  constructor(w, h) {
+    if (typeof w !== 'number' || w <= 0 || typeof h !== 'number' || h <= 0) {
+      return;
+    }
+    this.width = w;
+    this.height = h;
+  }
 
-const r1 = new Rectangle(2, 3);
-r1.print();
+  print() {
+    if (this.width && this.height) {
+      for (let i = 0; i < this.height; i++) {
+        console.log('X'.repeat(this.width));
+      }
+    }
+  }
+}
 
-const r2 = new Rectangle(10, 5);
-r2.print();:X
+module.exports = Rectangle;
+
