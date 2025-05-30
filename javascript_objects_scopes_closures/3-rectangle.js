@@ -1,22 +1,8 @@
-class Rectangle {
-  constructor(w, h) {
-    if (
-      typeof w !== 'number' || w <= 0 ||
-      typeof h !== 'number' || h <= 0
-    ) {
-      // Return an empty object by not assigning properties
-      return;
-    }
+#!/usr/bin/node
+const Rectangle = require('./3-rectangle');
 
-    this.width = w;
-    this.height = h;
-  }
+const r1 = new Rectangle(2, 3);
+r1.print();
 
-  print() {
-    for (let i = 0; i < this.height; i++) {
-      console.log('X'.repeat(this.width));
-    }
-  }
-}
-
-module.exports = Rectangle;
+const r2 = new Rectangle(10, 5);
+r2.print();:X
